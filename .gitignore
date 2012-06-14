@@ -15,7 +15,9 @@ profile
 
 # Java
 bin
+gen
 BuildConfig.java
+local.properties
 
 # osx noise
 .DS_Store
