@@ -2,6 +2,7 @@ package net.hockeyapp.android;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import no.birkettconsulting.controllers.Controller;
 
 public class HockeyAppController extends Controller {
@@ -24,7 +25,7 @@ public class HockeyAppController extends Controller {
 	
 	private void checkForUpdates() {
 		checkUpdateTask = (CheckUpdateTask) getActivity()
-				.getLastNonConfigurationInstance();
+				.getLastCustomNonConfigurationInstance();
 		if (checkUpdateTask != null) {
 			checkUpdateTask.attach(getActivity());
 		} else {
@@ -35,7 +36,7 @@ public class HockeyAppController extends Controller {
 	}
 
 	@Override
-	public Object onRetainNonConfigurationInstance() {
+	public Object onRetainCustomNonConfigurationInstance() {
 		checkUpdateTask.detach();
 		return checkUpdateTask;
 	}
@@ -50,8 +51,8 @@ public class HockeyAppController extends Controller {
 		CrashManager.register(mContext,mDownloadUrl, mAppId);
 	}
 
-	private Activity getActivity() {
-		return (Activity) mContext;
+	private FragmentActivity getActivity() {
+		return (FragmentActivity) mContext;
 	}
 
 }
