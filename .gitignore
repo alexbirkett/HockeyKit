@@ -18,6 +18,7 @@ bin
 gen
 BuildConfig.java
 local.properties
+lint.xml
 
 # osx noise
 .DS_Store
